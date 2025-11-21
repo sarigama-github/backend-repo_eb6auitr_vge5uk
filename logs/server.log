@@ -1,19 +1,11 @@
 INFO:     Will watch for changes in these directories: ['/home/workspace']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [206] using StatReload
-INFO:     Started server process [208]
+INFO:     Started reloader process [121] using StatReload
+INFO:     Started server process [123]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     172.20.0.1:57186 - "HEAD / HTTP/1.1" 405 Method Not Allowed
-INFO:     172.20.0.1:57166 - "GET /api/profile HTTP/1.1" 200 OK
-INFO:     172.20.0.1:57172 - "GET /api/content?limit=50 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:57166 - "GET /api/profile HTTP/1.1" 200 OK
-INFO:     172.20.0.1:57172 - "GET /api/content?limit=50 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:57164 - "GET /api/content?limit=50 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:57184 - "GET /api/profile HTTP/1.1" 200 OK
-INFO:     172.20.0.1:57184 - "GET /api/profile HTTP/1.1" 200 OK
-INFO:     172.20.0.1:57164 - "GET /api/content?limit=50 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:57164 - "GET /api/profile HTTP/1.1" 200 OK
-INFO:     172.20.0.1:57164 - "GET /api/content?limit=50 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:52530 - "GET /api/profile HTTP/1.1" 200 OK
-INFO:     172.20.0.1:57164 - "GET /api/content?limit=50 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46460 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.20.0.1:49376 - "GET /api/content?limit=50 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:49376 - "GET /api/content?limit=50 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:49380 - "GET /api/profile HTTP/1.1" 200 OK
+INFO:     172.20.0.1:49380 - "GET /api/profile HTTP/1.1" 200 OK
