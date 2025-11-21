@@ -1,48 +1,37 @@
 """
-Database Schemas
+Database Schemas for the Men's Club Training App
 
-Define your MongoDB collection schemas here using Pydantic models.
-These schemas are used for data validation in your application.
+Each Pydantic model name maps to a MongoDB collection using the lowercase class name.
+- User -> "user"
+- Content -> "content"
+- Session -> "session"
 
-Each Pydantic model represents a collection in your database.
-Model name is converted to lowercase for the collection name:
-- User -> "user" collection
-- Product -> "product" collection
-- BlogPost -> "blogs" collection
 """
-
+from typing import Optional, List
 from pydantic import BaseModel, Field
-from typing import Optional
-
-# Example schemas (replace with your own):
+from datetime import datetime
 
 class User(BaseModel):
-    """
-    Users collection schema
-    Collection name: "user" (lowercase of class name)
-    """
-    name: str = Field(..., description="Full name")
-    email: str = Field(..., description="Email address")
-    address: str = Field(..., description="Address")
-    age: Optional[int] = Field(None, ge=0, le=120, description="Age in years")
-    is_active: bool = Field(True, description="Whether user is active")
+    handle: str = Field(..., description="Public handle")
+    rank: str = Field("Initiate", description="Current rank title")
+    xp: int = Field(0, ge=0, description="Total XP (words typed)")
+    streak: int = Field(0, ge=0, description="Current daily streak in days")
 
-class Product(BaseModel):
-    """
-    Products collection schema
-    Collection name: "product" (lowercase of class name)
-    """
-    title: str = Field(..., description="Product title")
-    description: Optional[str] = Field(None, description="Product description")
-    price: float = Field(..., ge=0, description="Price in dollars")
-    category: str = Field(..., description="Product category")
-    in_stock: bool = Field(True, description="Whether product is in stock")
+class Content(BaseModel):
+    title: str = Field(..., description="Display title e.g., 'Seneca on Shortness of Life'")
+    section: str = Field(..., description="Track name e.g., 'ESSENTIAL FOUNDATIONS'")
+    sender: str = Field(..., description="Source/Author e.g., 'Seneca'")
+    topic_tag: str = Field(..., description="Topic tag e.g., 'Stoicism'")
+    difficulty: str = Field(..., description="Difficulty e.g., 'Medium' | 'Hard'")
+    time_estimate: str = Field(..., description="Quick estimate like '6 min'")
+    words: int = Field(..., ge=1, description="Word count of the passage")
+    text: str = Field(..., description="The passage to retype")
+    context: str = Field(..., description="Short priming context shown before typing")
 
-# Add your own schemas here:
-# --------------------------------------------------
-
-# Note: The Flames database viewer will automatically:
-# 1. Read these schemas from GET /schema endpoint
-# 2. Use them for document validation when creating/editing
-# 3. Handle all database operations (CRUD) directly
-# 4. You don't need to create any database endpoints!
+class Session(BaseModel):
+    user_id: Optional[str] = Field(None, description="User id as string; optional for anon MVP")
+    content_id: str = Field(..., description="ID of content that was typed")
+    words_typed: int = Field(..., ge=0)
+    duration_sec: int = Field(..., ge=0)
+    reflection: str = Field(..., description="User's applied reflection")
+    created_at: Optional[datetime] = None
